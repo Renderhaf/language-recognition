@@ -1,8 +1,9 @@
 from NeuralNet import NeuralNet
 import numpy as np
-from DatasetGenerator import makeFlatWordVector, language_codes
+from DatasetGenerator import makeFlatWordVector
+from config import LANGUAGE_CODES, MAX_LETTERS, NUM_LANGUAGES
 
-model = NeuralNet(17, 2)
+model = NeuralNet(MAX_LETTERS, NUM_LANGUAGES)
 
 
 def predict_words():
@@ -13,7 +14,7 @@ def predict_words():
         word = np.array(makeFlatWordVector(raw_word, 17))
 
         prediction = np.array(model.predict(word))
-        pred_language = list(language_codes.keys())[prediction.argmax()]
+        pred_language = list(LANGUAGE_CODES.keys())[prediction.argmax()]
         pred_precentage = round(float(prediction[prediction.argmax()]), 3)*100
 
         print(
@@ -37,7 +38,7 @@ def predict_sentences():
         final_predictions = np.array([sum(lang_predictions)/len(predictions)
                              for lang_predictions in zip(*predictions)])
 
-        pred_language = list(language_codes.keys())[final_predictions.argmax()]
+        pred_language = list(LANGUAGE_CODES.keys())[final_predictions.argmax()]
         pred_precentage = round(float(final_predictions[final_predictions.argmax()]), 3)*100
 
         print(

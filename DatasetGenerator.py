@@ -1,15 +1,12 @@
 import WordSuppplier, json
 import numpy as np
+from config import MAX_LETTERS, LANGUAGE_CODES, NUM_LANGUAGES
 
-language_codes = {
-    'english': 'en',
-    'spanish': 'es'
-}
 
 def getPages(language: str) -> list:
     with open('articles.json', 'r') as file:
         articles: dict = json.loads(file.read())
-    return articles.get(language_codes.get(language, language), [])
+    return articles.get(LANGUAGE_CODES.get(language, language), [])
 
 def fixWords(words: list):
     special_letters = {
@@ -31,7 +28,7 @@ def getAllLanguageWords(language: str):
     page_names = getPages(language)
     words = set()
     for pn in page_names:
-        page_words = WordSuppplier.getWordsFromArticle(pn, language_codes.get(language, language))
+        page_words = WordSuppplier.getWordsFromArticle(pn, LANGUAGE_CODES.get(language, language))
         print(f"Got {len(page_words)} words from {pn} in {language}")
         fixWords(page_words)
         for word in page_words:

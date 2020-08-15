@@ -2,7 +2,6 @@ import keras
 import numpy as np
 import os
 
-
 class NeuralNet():
     def __init__(self, max_word_length, language_amount, weights_filename='weight.h5', override=False, verbose=False):
         self.weights_filename = weights_filename
