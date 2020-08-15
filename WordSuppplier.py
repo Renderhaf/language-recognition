@@ -30,9 +30,9 @@ def _getFilteredWords(words: list):
     Filter words 
     '''
     wordlist = []
-    pattern = r'^[A-Z][a-z]+$'
+    pattern = r'^[A-Za-z]{2,}$'
     for word in words:
-        if len(re.findall(pattern, word)) == 1 and word not in wordlist and len(word) > 1:
+        if len(re.findall(pattern, word)) == 1 and word not in wordlist and 18 > len(word) > 1:
             wordlist.append(word)
 
     return wordlist

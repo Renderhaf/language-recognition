@@ -1,2 +1,4 @@
 log.json
 training_data.*
+*.h5
+/__pycache__
