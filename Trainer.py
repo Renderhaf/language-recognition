@@ -2,6 +2,7 @@ from NeuralNet import NeuralNet
 import numpy as np
 from sklearn.model_selection import train_test_split
 
+#Load the data
 data = np.load('training_data.npy', allow_pickle=True)
 values = data[0]
 results = data[1]
@@ -9,10 +10,9 @@ max_length = data[-1]
 
 print(f"There are {len(values)} words in the dataset")
 
+#Split the results
 split_results = train_test_split(values, results, test_size=0.1)
-
 split_results = [np.array(item) for item in split_results]
-
 train_x, validate_x, train_y, validate_y = split_results
 
 print(f"There are {len(train_x)} training items and {len(validate_x)} validation items")
@@ -25,6 +25,7 @@ model = NeuralNet(max_length, len(data)-1, override=override, verbose=True)
 
 print("Starting Training...")
 
+#Train the model
 model.fit(train_x, train_y, validate_x, validate_y, ephocs=200)
 
 print("Finished Training!")
