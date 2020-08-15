@@ -19,7 +19,9 @@ print(f"There are {len(train_x)} training items and {len(validate_x)} validation
 print("Training data shape is ", train_x[0].shape, train_y[0].shape)
 print("Validation data shape is ", validate_x[0].shape, validate_y[0].shape)
 
-model = NeuralNet(max_length, len(data)-1)
+override: bool = input("Override weights? (y/n) ").lower() in ["y", "yes"]
+
+model = NeuralNet(max_length, len(data)-1, override=override, verbose=True)
 
 print("Starting Training...")
 

@@ -8,7 +8,10 @@
         "Battle_of_Gettysburg",
         "New_York_City",
         "Milk",
-        "Water"
+        "Water",
+        "Smoke",
+        "Paper",
+        "Computer"
     ],
     "es" : [
         "Python",
@@ -19,6 +22,9 @@
         "Chocolate",
         "Madrid",
         "Leche",
-        "Agua"
+        "Agua",
+        "Humo",
+        "Papel",
+        "Computadora"
     ]
 }
